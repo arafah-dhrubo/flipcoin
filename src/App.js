@@ -1,24 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Sidebar from './components/sidebar/Sidebar';
+import Navbar from './components/navbar/Navbar';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from './components/dashbaord/Dashboard';
+import Login from './components/login/Login';
+import Signup from './components/signup/Signup';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className="relative flex justify-between bg-base-100">
+      {/* <div className='w-full h-screen overflow-y-auto'> */}
+        {/* <Navbar /> */}
+        {/* <div className=' h-full'> */}
+          <BrowserRouter>
+          <Sidebar />
+           <Routes>
+           {/* <Route path="/" element={}> */}
+            <Route path="/" element={<Dashboard/>}/>
+            <Route path="login" element={<Login/>}/>
+            <Route path="signup" element={<Signup/>}/>
+            <Route index element={<Dashboard/>}/>
+          {/* </Route> */}
+           </Routes>
+          </BrowserRouter>
+        </div>
+
   );
 }
 
